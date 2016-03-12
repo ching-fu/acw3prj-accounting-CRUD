@@ -6,7 +6,9 @@ class CreateRecords < ActiveRecord::Migration
       t.integer :money
       t.boolean :is_income
       t.text :detail
+      #pay_way, 0=cash 1=card 2=atm
       t.integer :pay_way
+      #is type a keyword??
       t.string :type
       t.string :group
       t.boolean :is_public

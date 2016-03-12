@@ -1,1 +1,7 @@
 <h1> new.html.erb </h1>
+<%= form_for @record, :url => records_path do |f| %>
+<!-- render will use _form.html.erb -->
+	<%= render :partial => 'form', :locals => { :f => f } %>
+
+    <%= f.submit "Create" %>
+<% end %>

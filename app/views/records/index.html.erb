@@ -1,2 +1,17 @@
 <h1> index.html.erb </h1>
-<%= link_to 'log out', '/' %>
+<table class="table">
+<% @records.each do |e| %>
+	<tr>
+		<td><%= e.name %></td>
+		<td>
+			<%= link_to 'Show', record_path(e) %>
+			<%= link_to 'Edit',  edit_record_path(e) %>
+			<%= link_to 'Delete',  record_path(e), :method => :delete %>
+		</td>
+	</tr>
+<% end %>
+</table>
+<div>
+<%= link_to 'New Event',new_record_path %>
+</div>
+<%= link_to 'log out', root_path %>
