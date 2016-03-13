@@ -1,1 +1,14 @@
 <h1> show.html.erb </h1>
+<ul>
+	<li>Date: <%= @record.date %></li>
+	<li>Name: <%= @record.name %></li>
+	<li>Money: <%= @record.money %></li>
+	<li>Type: <%= @record.group %></li>
+	<li>Way: <%= @record.pay_way %></li>
+</ul>
+<div>
+<p>Detail:</p></br>
+<%= simple_format(@record.detail) %>
+</div>
+<%= link_to 'Back to index', records_path %>
+

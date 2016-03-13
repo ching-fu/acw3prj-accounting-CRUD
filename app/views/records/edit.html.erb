@@ -1,1 +1,7 @@
 <h1> edit.html.erb </h1>
+<%= form_for @record, :url => record_path(@record), :method => :patch do |f| %>
+<!-- render will use _form.html.erb -->
+	<%= render :partial => 'form', :locals => { :f => f } %>
+
+    <%= f.submit "Update" %>
+<% end %>

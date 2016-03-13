@@ -2,7 +2,25 @@
 <table class="table">
 <% @records.each do |e| %>
 	<tr>
+		<td><%= e.date %></td>
 		<td><%= e.name %></td>
+		<td><%= e.money %></td>
+		<td><%=
+			case e.pay_way
+			when 0
+				"cash"
+			when 1
+				"card"
+			when 2
+				"atm"
+			end
+			%>
+		</td>
+		<td>
+			<%=
+			(e.is_income) ? ("income"): ("      ")
+			%>
+		</td>		
 		<td>
 			<%= link_to 'Show', record_path(e) %>
 			<%= link_to 'Edit',  edit_record_path(e) %>
