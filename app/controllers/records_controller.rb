@@ -3,7 +3,7 @@ class RecordsController < ApplicationController
 		#log in page
 	end
 	def index
-		@records=Record.all
+		@records = Record.page(params[:page]).per(3)#for kaminari		
 	end
 	def new
 		@record=Record.new

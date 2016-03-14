@@ -14,6 +14,7 @@ gem 'coffee-rails', '~> 4.1.0'
 
 gem 'pg', group: :production
 gem 'rails_12factor', group: :production
+gem 'kaminari'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

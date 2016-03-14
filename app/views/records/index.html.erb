@@ -32,4 +32,6 @@
 <div>
 <%= link_to 'New Event',new_record_path %>
 </div>
+<%= paginate @records %>
+
 <%= link_to 'log out', root_path %>
