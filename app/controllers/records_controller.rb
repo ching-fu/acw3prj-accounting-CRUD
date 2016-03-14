@@ -10,13 +10,19 @@ class RecordsController < ApplicationController
 	end
 	def create		
 		@record = Record.new(record_params)
-		@record.save
-		redirect_to records_path
+		if @record.save
+			flash[:notice] ="successfully created"
+			redirect_to records_path
+		else
+			flash[:alert] ="please ensure date, name, money, way are filled~~"
+			render :action => :new #new.html.erb
+		end		
 	end
 	def destroy
 		puts params
 		@record=Record.find(params[:id])
 		@record.destroy
+			flash[:notice] ="record is deleted~~"		
 		redirect_to records_path
 	end
 	def show
@@ -27,8 +33,13 @@ class RecordsController < ApplicationController
 	end	
 	def update
 		@record = Record.find(params[:id])
-		@record.update(record_params)		
-		redirect_to records_path		
+		if @record.update(record_params)
+			flash[:notice] ="successfully updated"			
+			redirect_to records_path		
+		else
+			flash[:alert] ="please ensure date, name, money, way are filled~~"			
+			render :action => :edit
+		end
 	end
 	private
 	#for Strong Parameters
