@@ -5,17 +5,8 @@
 		<td><%= e.date %></td>
 		<td><%= e.name %></td>
 		<td><%= e.money %></td>
-		<td><%=
-			case e.pay_way
-			when 0
-				"cash"
-			when 1
-				"card"
-			when 2
-				"atm"
-			end
-			%>
-		</td>
+		<td><%= e.howpay.bank %></td>
+		<td><%= e.howpay.way %></td>		
 		<td>
 			<%=
 			(e.is_income) ? ("income"): ("      ")

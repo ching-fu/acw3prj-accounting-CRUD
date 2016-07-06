@@ -3,7 +3,7 @@ class RecordsController < ApplicationController
 		#log in page
 	end
 	def index
-		@records = Record.page(params[:page]).per(3)#for kaminari		
+		@records = Record.page(params[:page]).per(20)#for kaminari		
 	end
 	def new
 		@record=Record.new
@@ -45,7 +45,7 @@ class RecordsController < ApplicationController
 	#for Strong Parameters
 	#to read :name & :detail from params[:record]
 	def record_params
-  		params.require(:record).permit(:name, :detail, :date, :pay_way, :money, :group, :is_income)
+  		params.require(:record).permit(:name, :detail, :date, :howpay_id, :money, :category_id, :is_income)
 	end	
 
 end

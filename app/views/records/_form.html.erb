@@ -1,31 +1,31 @@
 <table>
 	<tr>
 	<td><%= f.label :date, "Date:" %><%= f.date_field :date %></td>
-
+	<!--todo: make default date today -->
 	<td><%= f.label :name, "Name:" %><%= f.text_field :name %></td>
 
 	<td><%= f.label :money, "$:" %><%= f.number_field :money %></td>
-
-	<td><%= f.label :group, "Type:" %><%= f.text_field :group %></td>
-
+	<td>
+		<%= f.select :category_id, Category.all.map{ |c| [ c.name , c.id ] } %>	
+	</td>
 	</tr>
+
 	<tr>
 	<td>
-	<%= f.label :is_income, "income:" %><%= f.radio_button :is_income, true %>
-	<%= f.label :is_income, "spend:" %><%= f.radio_button :is_income, false %>	
+	<!--todo: make default false -->
+		<%= f.label :is_income, "income:" %><%= f.radio_button :is_income, true %>
+		<%= f.label :is_income, "spend:" %><%= f.radio_button :is_income, false %>	
 	</td>
 	<td>
-	<%= f.label :pay_way, "cash:" %><%= f.radio_button :pay_way, 0 %>
-	<%= f.label :pay_way, "card:" %><%= f.radio_button :pay_way, 1 %>
-	<%= f.label :pay_way, "atm:" %><%= f.radio_button :pay_way, 2 %>
-	</td>	
+		<%= f.select :howpay_id, Howpay.all.map{ |h| [ h.way.to_s+" "+h.bank.to_s, h.id] } %>		
+	</td>
 	</tr>
 	<tr>
 	<td>
 	<div>
-	<%= f.label :detail, "Detail:" %>
+		<%= f.label :detail, "Detail:" %>
 	<%#= , :cols => "50%"%>
-	<%= f.text_area :detail %>
+		<%= f.text_area :detail %>
 	</div>
 	</td>
 	</tr>
