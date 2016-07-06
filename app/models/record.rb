@@ -1,3 +1,6 @@
 class Record < ActiveRecord::Base
-	validates_presence_of :name, :date, :money, :pay_way
+	validates_presence_of :name, :date, :money, :howpay_id, :category_id
+	belongs_to :category
+	belongs_to :howpay
+	belongs_to :cardbill
 end

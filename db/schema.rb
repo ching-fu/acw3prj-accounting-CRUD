@@ -11,7 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160311042601) do
+ActiveRecord::Schema.define(version: 20160615091344) do
+
+  create_table "cardbills", force: :cascade do |t|
+    t.date     "paid_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "howpays", force: :cascade do |t|
+    t.string   "way"
+    t.string   "bank"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "records", force: :cascade do |t|
     t.date     "date"
@@ -19,12 +38,12 @@ ActiveRecord::Schema.define(version: 20160311042601) do
     t.integer  "money"
     t.boolean  "is_income"
     t.text     "detail"
-    t.integer  "pay_way"
-    t.string   "type"
     t.string   "group"
     t.boolean  "is_public"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "category_id"
+    t.integer  "howpay_id"
   end
 
 end
