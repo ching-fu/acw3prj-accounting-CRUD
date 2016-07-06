@@ -1,20 +1,18 @@
 <table>
 	<tr>
-	<td><%= f.label :date, "Date:" %><%= f.date_field :date %></td>
+	<td><%= f.label :date, "Date:" %><%= f.date_field :date, {value: Date.today} %></td>
 	<!--todo: make default date today -->
-	<td><%= f.label :name, "Name:" %><%= f.text_field :name %></td>
-
-	<td><%= f.label :money, "$:" %><%= f.number_field :money %></td>
 	<td>
 		<%= f.select :category_id, Category.all.map{ |c| [ c.name , c.id ] } %>	
-	</td>
+	</td>	
+	<td><%= f.label :name, "Name:" %><%= f.text_field :name %></td>
 	</tr>
 
 	<tr>
+	<td><%= f.label :money, "$:" %><%= f.number_field :money %></td>	
 	<td>
-	<!--todo: make default false -->
 		<%= f.label :is_income, "income:" %><%= f.radio_button :is_income, true %>
-		<%= f.label :is_income, "spend:" %><%= f.radio_button :is_income, false %>	
+		<%= f.label :is_income, "spend:" %><%= f.radio_button :is_income, false, { checked: true} %>	
 	</td>
 	<td>
 		<%= f.select :howpay_id, Howpay.all.map{ |h| [ h.way.to_s+" "+h.bank.to_s, h.id] } %>		
