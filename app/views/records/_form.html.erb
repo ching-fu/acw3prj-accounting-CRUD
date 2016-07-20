@@ -9,22 +9,57 @@
 	</tr>
 
 	<tr>
-	<td><%= f.label :money, "$:" %><%= f.number_field :money %></td>	
+	<td>
+		<%= f.select :currency_id, Currency.all.map{ |s| [ s.name.to_s, s.id] } %>	
+		<ul hidden id='currency_ratio'>
+			<% Currency.all.each do |e| %>
+			<li><%=e.ratio%></li>
+			<%end%>
+		</ul>	
+	</td>	
+	<td><%= f.label :money, "$:" %><%= f.number_field :money%></td>	
+	<td>
+		<%= f.select :howpay_id, Howpay.all.map{ |h| [ h.way.to_s+" "+h.bank.to_s, h.id] } %>		
+	</td>	
+	</tr>
+	<tr>
 	<td>
 		<%= f.label :is_income, "income:" %><%= f.radio_button :is_income, true %>
 		<%= f.label :is_income, "spend:" %><%= f.radio_button :is_income, false, { checked: true} %>	
-	</td>
-	<td>
-		<%= f.select :howpay_id, Howpay.all.map{ |h| [ h.way.to_s+" "+h.bank.to_s, h.id] } %>		
-	</td>
-	</tr>
-	<tr>
+	</td>	
 	<td>
 	<div>
 		<%= f.label :detail, "Detail:" %>
 	<%#= , :cols => "50%"%>
 		<%= f.text_area :detail %>
 	</div>
+	</td>
+	<td>
+		<p id="money_twd"></p>
+		<script>
+			var money=document.querySelector("#record_money");
+			var currency=document.querySelector("#record_currency_id");
+			var ratio=1;
+			currency.addEventListener('change',function(e){
+				// alert(parseInt(currency.value));
+				var temp=document.querySelector("ul[hidden]").childNodes;
+				ratio=parseInt(temp[parseInt(currency.value)*2-1].innerHTML);
+				// alert(temp[parseInt(currency.value)*2-1].innerHTML);
+				if(ratio==1){
+					document.querySelector('#money_twd').innerHTML='';
+				}
+			},false);			
+			money.addEventListener('change',function(e){
+				// alert(money.value);
+				// var bechosen=document.querySelector("#record_currency_id > option[selected]");
+				// alert(bechosen.value);
+				if(ratio!=1){
+					// var tt=parseInt(money.value)*ratio;
+					// alert(tt.toString());
+					document.querySelector('#money_twd').innerHTML=" around "+(parseInt(money.value)*ratio).toString()+" TWD";	
+				}
+			},false);
+		</script>
 	</td>
 	</tr>
 </table>

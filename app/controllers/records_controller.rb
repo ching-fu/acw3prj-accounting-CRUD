@@ -45,7 +45,7 @@ class RecordsController < ApplicationController
 	#for Strong Parameters
 	#to read :name & :detail from params[:record]
 	def record_params
-  		params.require(:record).permit(:name, :detail, :date, :howpay_id, :money, :category_id, :is_income)
+  		params.require(:record).permit(:name, :detail, :date, :howpay_id, :money, :category_id, :is_income, :currency_id)
 	end	
 
 end

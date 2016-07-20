@@ -25,3 +25,8 @@ Howpay.create!(:way=>'CARD',:bank=>'花旗')
 Howpay.create!(:way=>'CARD',:bank=>'聯邦')
 Howpay.create!(:way=>'CARD',:bank=>'富邦')
 Howpay.create!(:way=>'CARD',:bank=>'五信')
+
+Currency.create!(:name=>'TWD',:ratio=>'1')
+Currency.create!(:name=>'HKD',:ratio=>'4.1271')
+Currency.create!(:name=>'USD',:ratio=>'32.0051')
+Currency.create!(:name=>'JPY',:ratio=>'0.3018')

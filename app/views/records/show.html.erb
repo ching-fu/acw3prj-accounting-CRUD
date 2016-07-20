@@ -2,9 +2,16 @@
 <ul>
 	<li>Date: <%= @record.date %></li>
 	<li>Name: <%= @record.name %></li>
-	<li>Money: <%= @record.money %></li>
-	<li>Type: <%= @record.group %></li>
-	<li>Way: <%= @record.pay_way %></li>
+	<li>Money:
+		<% if @record.currency.name!='TWD'%>
+			<%= @record.money.to_s+@record.currency.name.to_s %>  
+			== <%= @record.money*@record.currency.ratio.to_f %> NTD
+		<%else%>
+			<%= @record.money %> NTD
+		<%end%>
+	</li>
+	<li>Type: <%= @record.category.name %></li>
+	<li>Way: <%= @record.howpay.way.to_s+" "+@record.howpay.bank.to_s %></li>
 </ul>
 <div>
 <p>Detail:</p></br>

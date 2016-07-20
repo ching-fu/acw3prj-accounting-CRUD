@@ -4,7 +4,7 @@
 	<tr>
 		<td><%= e.date %></td>
 		<td><%= e.name %></td>
-		<td><%= e.money %></td>
+		<td><%= e.money.to_s+" "+e.currency.name.to_s %></td>
 		<td><%= e.howpay.bank %></td>
 		<td><%= e.howpay.way %></td>		
 		<td>
